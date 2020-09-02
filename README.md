@@ -1,27 +1,23 @@
-![](https://github.com/fastai/nbdev/workflows/CI/badge.svg)
+
+# Welcome to nbprof
+> Document your data cleaning.
 
 
-# Welcome to nbdev
-> Create delightful python projects using Jupyter Notebooks
+`nbprof` is a library that allows you to analyze, clean and prepare your data in a rigorous way, putting all your code, tests and documentation in one place. 
 
+Using the interactive environment, you can easily explore datasets, document assumptions, and write code to transform, aggregate, or obfuscate. The library builds customized template notebooks containing standard statistical checks to speed up the process of validating data.  Add `%nbprof_export` flags to the cells that you want to contain in your data pipeline. 
 
-`nbdev` is a library that allows you to fully develop a library in [Jupyter Notebooks](https://jupyter.org/), putting all your code, tests and documentation in one place. That is: you now have a true [literate programming](https://en.wikipedia.org/wiki/Literate_programming) environment, as envisioned by Donald Knuth back in 1983!
+Using notebooks written like this, `nbprof` can create a record of your assumptions and processing steps including:
 
-Using the interactive environment, you can easily debug and refactor your code. Add `%nbdev_export` flags to the cells that define the functions you want to include in your python modules. Here, for instance, is how `combined_cos` is defined and documented in the `fastai` library:
-
-<img alt="Exporting from nbdev" width="700" caption="An example of a function defined in one cell (marked with the export flag) and explained, along with a visual example, in the following cells" src="nbs/images/export_example.png">
-
-Using notebooks written like this, `nbdev` can create and run any of the following with a single command:
-
-- Searchable, hyperlinked documentation; any word you surround in backticks will be *automatically* hyperlinked to the appropriate documentation
-- Python modules, following best practices such as automatically defining `__all__` ([more details](http://xion.io/post/code/python-all-wild-imports.html)) with your exported functions, classes, and variables
-- Pip and conda installers (uploaded to pypi and anaconda for you)
-- Tests (defined directly in your notebooks, and run in parallel)
-- Navigate and edit your code in a standard text editor or IDE, and export any changes automatically back into your notebooks
+- Searchable, hyperlinked documentation
+- Python modules, with your exported pipeline functions, classes, and variables
+- Tests that can be used to understand the completeness of your analysis
+- Enable collaboration with data engineers: Navigate and edit your data pipeline code in a standard text editor or IDE, and export any changes automatically back into your notebooks
+- All ready for version control.
 
 Since you are in a notebook, you can also add charts, text, links, images, videos, etc, that will included automatically in the documentation of your library. The cells where your code is defined will be hidden and replaced by standardized documentation of your function, showing its name, arguments, docstring, and link to the source code on github. For instance, the cells above are converted to:
 
-<img alt="Documentation in nbdev" width="600" caption="An example of automated documentation from the fastai library" src="nbs/images/doc_example.png">
+You may be able to tell that this library leans heavily on a modified version of nbdev - a library from fastai. 
 
 See below for *Installing* and *Getting Started*. In the other pages of the documentation, you can get more details about:
 
@@ -106,26 +102,7 @@ If you have set the parameter nbs_path to be anything other than the project roo
 
 There's a lot of functionality in `nbdev`; see the docs for each module in the sidebar to learn about all the features. Here we'll briefly highlight a couple.
 
-### Adding your project to pypi and conda
 
-If you want people to be able to install your project by just typing `pip install your-project` then you need to upload it to [pypi](https://pypi.org/). The good news is, we've already created a fully pypi compliant installer for your project! So all you need to do is register at pypi, if you haven't previously done so, and then create a file called `~/.pypirc` with your login details. It should have these contents:
-
-```
-[pypi]
-username = your_pypi_username
-password = your_pypi_password
-```
-
-Another thing you will need is `twine`, so you should run once
-``` 
-pip install twine
-```
-
-To upload your project to pypi, just type `make pypi` in your project root directory. Once it's complete, a link to your project on pypi will be printed.
-
-To also upload your project to anaconda, [create an account](https://docs.anaconda.com/anaconda-repository/user-guide/tasks/create-account/) and then type `anaconda login` at your terminal. The use `make release` instead of `make pypi` - that will create and upload the pypi and conda packages and will also increment your version number.
-
-**NB**: make sure you increment the version number in `settings.ini` each time you want to push a new release to pypi. If you call `make release` that will be done for you.
 
 ### Avoiding and handling git conflicts
 
@@ -207,6 +184,10 @@ nbdev_install_git_hooks
 ```
 in the cloned repository folder. 
 
-## Copyright
+## Copyright 
+
+Copyright 2020 onwards, Stephen Wood. Licensed under the Apache License, Version 2.0 (the "License"); you may not use this project's files except in compliance with the License. A copy of the License is provided in the LICENSE file in this repository. 
+
+## Original nbdev Copyright 
 
 Copyright 2019 onwards, fast.ai, Inc. Licensed under the Apache License, Version 2.0 (the "License"); you may not use this project's files except in compliance with the License. A copy of the License is provided in the LICENSE file in this repository.
